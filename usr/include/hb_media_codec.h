@@ -148,7 +148,7 @@ typedef struct _media_codec_profile {
 /**
  * Profile type.
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: -1
@@ -237,7 +237,7 @@ typedef enum _mc_pixel_format {
 	MC_PIXEL_FORMAT_NONE = -1,
 	/* planar YUV 4:2:0, 12bpp, (1 Cr & Cb sample per 2x2 Y samples) */
 	MC_PIXEL_FORMAT_YUV420P,
-	/* 
+	/*
 	 * planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components,
 	 * which are interleaved (first byte U and the following byte V).
 	 */
@@ -603,7 +603,7 @@ typedef struct _mc_av_codec_rect {
  * A horizontal pixel offset of top-left corner of rectangle.
  * Values[0, 8192], Should be equal to multiple of 2
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: 0
@@ -614,7 +614,7 @@ typedef struct _mc_av_codec_rect {
  * A vertical pixel offset of top-left corner of rectangle.
  * Values[0, 8192], Should be equal to multiple of 2
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: 0
@@ -625,7 +625,7 @@ typedef struct _mc_av_codec_rect {
  * The width of the crop rect.
  * Values(0, 8192], Should be equal to multiple of 2
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: 0
@@ -636,7 +636,7 @@ typedef struct _mc_av_codec_rect {
  * The height of the crop rect.
  * Values(0, 8192], Should be equal to multiple of 2
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: 0
@@ -713,7 +713,7 @@ typedef struct _mc_h264_cbr_params {
 	hb_u32 frame_rate;
 
 /**
- * Specifies the initial QP by user. If this value is smaller than 0 or 
+ * Specifies the initial QP by user. If this value is smaller than 0 or
  * larger than 51, the initial QP is decided by F/W.
  * Values[0~63]
  *
@@ -727,7 +727,7 @@ typedef struct _mc_h264_cbr_params {
 /**
  * Specifies the size of the VBV buffer in msec (10 ~ 3000).
  * For example, 3000 should be set for 3 seconds. This value is valid
- * when RateControl is 1. VBV buffer size in bits is 
+ * when RateControl is 1. VBV buffer size in bits is
  * bit_rate * vbv_buffer_size / 1000.
  * vbv_buffer_size has relevance to picture quality and bitrate accuracy.
  * As vbv_buffer_size is shorter, encoder can reach target bitrate accurately
@@ -753,7 +753,7 @@ typedef struct _mc_h264_cbr_params {
 	hb_s32 vbv_buffer_size;
 
 /**
- * The rate control can work in frame level and MB level. 
+ * The rate control can work in frame level and MB level.
  * VPU works defaultly in frame level. If ROI encoding is enabled, the MB
  * level rate control is turned off automatically. Enable Mb level where
  * bitrate error should be severely low like in broadcasting application.
@@ -988,7 +988,7 @@ typedef struct mc_h264_avbr_params_t {
 	hb_u32 frame_rate;
 
 /**
- * Specifies the initial QP by user. If this value is smaller than 0 or 
+ * Specifies the initial QP by user. If this value is smaller than 0 or
  * larger than 51, the initial QP is decided by F/W.
  * Values[0~63]
  *
@@ -1002,7 +1002,7 @@ typedef struct mc_h264_avbr_params_t {
 /**
  * Specifies the size of the VBV buffer in msec (10 ~ 3000).
  * For example, 3000 should be set for 3 seconds. This value is valid
- * when RateControl is 1. VBV buffer size in bits is 
+ * when RateControl is 1. VBV buffer size in bits is
  * bit_rate * vbv_buffer_size / 1000.
  * vbv_buffer_size has relevance to picture quality and bitrate accuracy.
  * As vbv_buffer_size is shorter, encoder can reach target bitrate accurately
@@ -1028,7 +1028,7 @@ typedef struct mc_h264_avbr_params_t {
 	hb_s32 vbv_buffer_size;
 
 /**
- * The rate control can work in frame level and MB level. 
+ * The rate control can work in frame level and MB level.
  * VPU works defaultly in frame level. If ROI encoding is enabled, the MB
  * level rate control is turned off automatically. Enable Mb level where
  * bitrate error should be severely low like in broadcasting application.
@@ -1326,7 +1326,7 @@ typedef struct _mc_h265_cbr_params {
 	hb_u32 frame_rate;
 
 /**
- * Specifies the initial QP by user. If this value is smaller than 0 or 
+ * Specifies the initial QP by user. If this value is smaller than 0 or
  * larger than 51, the initial QP is decided by F/W.
  * Values[0~63]
  *
@@ -1340,7 +1340,7 @@ typedef struct _mc_h265_cbr_params {
 /**
  * Specifies the size of the VBV buffer in msec (10 ~ 3000).
  * For example, 3000 should be set for 3 seconds. This value is valid
- * when RateControl is 1. VBV buffer size in bits is 
+ * when RateControl is 1. VBV buffer size in bits is
  * bit_rate * vbv_buffer_size / 1000.
  * vbv_buffer_size has relevance to picture quality and bitrate accuracy.
  * As vbv_buffer_size is shorter, encoder can reach target bitrate accurately
@@ -1366,7 +1366,7 @@ typedef struct _mc_h265_cbr_params {
 	hb_s32 vbv_buffer_size;
 
 /**
- * The rate control can work in frame level and ctu level. 
+ * The rate control can work in frame level and ctu level.
  * VPU works defaultly in frame level. If ROI encoding is enabled, the ctu
  * level rate control is turned off automatically. Enable ctu level where
  * bitrate error should be severely low like in broadcasting application.
@@ -1602,7 +1602,7 @@ typedef struct _mc_h265_avbr_params {
 	hb_u32 frame_rate;
 
 /**
- * Specifies the initial QP by user. If this value is smaller than 0 or 
+ * Specifies the initial QP by user. If this value is smaller than 0 or
  * larger than 51, the initial QP is decided by F/W.
  * Values[0~63]
  *
@@ -1616,7 +1616,7 @@ typedef struct _mc_h265_avbr_params {
 /**
  * Specifies the size of the VBV buffer in msec (10 ~ 3000).
  * For example, 3000 should be set for 3 seconds. This value is valid
- * when RateControl is 1. VBV buffer size in bits is 
+ * when RateControl is 1. VBV buffer size in bits is
  * bit_rate * vbv_buffer_size / 1000.
  * vbv_buffer_size has relevance to picture quality and bitrate accuracy.
  * As vbv_buffer_size is shorter, encoder can reach target bitrate accurately
@@ -1642,7 +1642,7 @@ typedef struct _mc_h265_avbr_params {
 	hb_s32 vbv_buffer_size;
 
 /**
- * The rate control can work in frame level and ctu level. 
+ * The rate control can work in frame level and ctu level.
  * VPU works defaultly in frame level. If ROI encoding is enabled, the ctu
  * level rate control is turned off automatically. Enable ctu level where
  * bitrate error should be severely low like in broadcasting application.
@@ -1898,7 +1898,7 @@ typedef struct _mc_mjpeg_fix_qp_params {
  * The target frame rate of the encoded data in fps.
  * Values[1,240]fps
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 30
@@ -2034,7 +2034,7 @@ typedef struct _mc_rate_control_params {
 } mc_rate_control_params_t;
 
 /**
-* This is a data structure for custom GOP parameters of the given picture. 
+* This is a data structure for custom GOP parameters of the given picture.
 **/
 typedef struct _mc_video_custom_gop_pic_params {
 /**
@@ -2055,7 +2055,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * A POC of Nth picture in the custom GOP.
  * Values[1,custom_gop_size]
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2066,7 +2066,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * A quantization parameter of Nth picture in the custom GOP.
  * Values[0,51]
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 30
@@ -2080,7 +2080,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * Values[0,1] for XJ3/J6
  * Values[0] for J5
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2091,7 +2091,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * A POC of reference L0 of Nth picture in the custom GOP.
  * Values[-custom_gop_size, custom_gop_size]
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2102,7 +2102,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * A POC of reference L1 of Nth picture in the custom GOP.
  * Values[-custom_gop_size, custom_gop_size]
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2113,7 +2113,7 @@ typedef struct _mc_video_custom_gop_pic_params {
  * A temporal ID of Nth picture in the custom GOP.
  * Values[0,6]
  *
- * - Note: It's unchangable parameter. 
+ * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2132,7 +2132,7 @@ typedef struct _mc_video_custom_gop_params {
  * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u32 custom_gop_size;
 
@@ -2204,7 +2204,7 @@ typedef struct _mc_video_gop_params {
  * - Note: It's unchangable parameter.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_s32 custom_gop_size;
 
@@ -2263,7 +2263,7 @@ typedef struct _mc_h264_enc_config {
 **/
 typedef struct _mc_h265_enc_config {
 /**
- * User add profile information to SPS by setting the profile register. 
+ * User add profile information to SPS by setting the profile register.
  * However, if you set 0 or have done nothing to the register, VPU
  * automatically encodes a profile by using the bit depth of source picture.
  * The valid numbers are as follows.
@@ -2528,7 +2528,7 @@ typedef struct _mc_jpeg_enc_config {
  * 	0 : disable
  * 	1  : enable
  *
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0
@@ -2550,7 +2550,7 @@ typedef struct _mc_jpeg_enc_config {
  * Quality factor. Qualities 50..100 are converted to scaling percentage
  * 200 - 2*Q. Note that at Q=100 the scaling is 0, it will cause minimum
  * quantization loss and low compressibility. Qualities 1..50 are converted
- * to scaling percentage 5000/Q. Note that at Q=1 the scaling is 5000, 
+ * to scaling percentage 5000/Q. Note that at Q=1 the scaling is 5000,
  * it will cause maximum quantization loss and high compressibility.
  * Values[0~100]
  *
@@ -2877,7 +2877,7 @@ typedef enum _mc_video_stream_feeding_mode {
 **/
 typedef struct _mc_h264_dec_config {
 /**
- * Support frame reordering. That is, the coded order may be different 
+ * Support frame reordering. That is, the coded order may be different
  * from the presentation order of the corresponding frames.
  * The valid numbers are as follows.
  *     0 : disable reordering
@@ -2900,7 +2900,7 @@ typedef struct _mc_h264_dec_config {
  *           with MAX_DEC_TEMP_ID. (The sub-layer non-reference picture is
  *           the one whose nal_unit_type equal to TRAIL_N, TSA_N, STSA_N,
  *           RADL_N, RASL_N, RSV_VCL_N10, RSV_VCL_N12, or RSV_VCL_N14. )
- *     0x03: thumbnail mode. It skips non-IRAP pictures w/o registering 
+ *     0x03: thumbnail mode. It skips non-IRAP pictures w/o registering
  *           reference DPB.
  *
  * - Note: It's unchangable parameters in the same sequence.
@@ -2912,7 +2912,7 @@ typedef struct _mc_h264_dec_config {
 
 /**
  * Support bandwidth optimization feature which allows VPU to skip writing
- * compressed format of non-reference pictures or linear format of 
+ * compressed format of non-reference pictures or linear format of
  * non-display pictures to the frame buffer for BW saving reason.
  * The valid numbers are as follows.
  *     0 : disable bandwidth optimization
@@ -2931,7 +2931,7 @@ typedef struct _mc_h264_dec_config {
 **/
 typedef struct _mc_h265_dec_config {
 /**
- * Support frame reordering. That is, the coded order may be different 
+ * Support frame reordering. That is, the coded order may be different
  * from the presentation order of the corresponding frames.
  * The valid numbers are as follows.
  *     0 : disable reordering
@@ -2950,7 +2950,7 @@ typedef struct _mc_h265_dec_config {
  *     0x00: normal DEC_PIC.
  *     0x01: skip non-IRAP.
  *     0x02: skip non-reference picture.
- *     0x03: thumbnail mode. It skips non-IRAP pictures w/o registering 
+ *     0x03: thumbnail mode. It skips non-IRAP pictures w/o registering
  *           reference DPB. It's only for XJ3/J6.
  *
  * - Note: It's unchangable parameters in the same sequence.
@@ -2976,7 +2976,7 @@ typedef struct _mc_h265_dec_config {
 
 /**
  * Support bandwidth optimization feature which allows VPU to skip writing
- * compressed format of non-reference pictures or linear format of 
+ * compressed format of non-reference pictures or linear format of
  * non-display pictures to the frame buffer for BW saving reason.
  * The valid numbers are as follows.
  *     0 : disable bandwidth optimization
@@ -3162,7 +3162,7 @@ typedef struct _mc_video_codec_dec_params {
 	mc_pixel_format_t pix_fmt;
 
 /**
- * Specify the size of bitstream buffer. The buffers are internally 
+ * Specify the size of bitstream buffer. The buffers are internally
  * allocated by MediaCodec. It's size should be larger than the feeding
  * size. Usually, it should align with 1024.
  * Values[1024, 2^31-1]
@@ -3201,14 +3201,14 @@ typedef struct _mc_video_codec_dec_params {
 	hb_bool external_bitstream_buf;
 
 /**
- * The size of FrameBuffer is decided by the MediaCodec according to the 
+ * The size of FrameBuffer is decided by the MediaCodec according to the
  * sequence information. But users can specify the count of FrameBuffer
  * buffers. VPU may delay decoded picture display for display reordering
- * when H.264/H.265, pic_order_cnt_type 0 or 1 case and for B-frame 
- * handling in VC1 decoder. If the specified count is less then the 
+ * when H.264/H.265, pic_order_cnt_type 0 or 1 case and for B-frame
+ * handling in VC1 decoder. If the specified count is less then the
  * required count, MediaCodec with H264/H265 will modify the
- * specified count to the value that the maximum display frame buffer 
- * delay for buffering decoded picture reorder plus. 
+ * specified count to the value that the maximum display frame buffer
+ * delay for buffering decoded picture reorder plus.
  * (extra frame buffer number(1) + 1). MediaCodec with MJPEG/JPEG will
  * choose at least 2 frame buffer.
  * Values[1,31]
@@ -3565,8 +3565,8 @@ typedef struct _mc_audio_codec_enc_params {
 /**
  * Number of samples per channel in an audio frame.
  * Users must not modify this value!!! And users can read this value after
- * starting the codec. Each submitted frame except the last must contain 
- * exactly frame_size samples per channel. May be 0 when the codec has 
+ * starting the codec. Each submitted frame except the last must contain
+ * exactly frame_size samples per channel. May be 0 when the codec has
  * AV_CODEC_CAP_VARIABLE_FRAME_SIZE set, then the frame size is not
  * restricted.
  *
@@ -3759,7 +3759,7 @@ typedef struct _media_codec_context {
 /**
  * Private data. Users must not modify this value!!!
  * Values[0,31]
- * - Note: 
+ * - Note:
  * - Encoding: Support.
  * - Decoding: Support.
  * - Default: -1
@@ -3882,18 +3882,18 @@ typedef struct _mc_h264_h265_output_frame_info {
 
 /**
  * This is a frame buffer index for the picture to be displayed at the
- * moment among frame buffers which are registered using 
+ * moment among frame buffers which are registered using
  * VPU_DecRegisterFrameBuffer(). Frame data to be displayed are stored into
  * the frame buffer with this index.
- * When there is no display delay, this index is always the same with 
- * frame_decoded_index. However, if display delay does exist for display 
+ * When there is no display delay, this index is always the same with
+ * frame_decoded_index. However, if display delay does exist for display
  * reordering in AVC or B-frames in VC1), this index might be different
- * with frame_decoded_index. By checking this index, HOST application can 
+ * with frame_decoded_index. By checking this index, HOST application can
  * easily know whether sequence decoding has been finished or not.
  * The valid numbers are as follows.
- *     -3(0xFFFD) or -2(0xFFFE) : a display output cannot be given due to 
+ *     -3(0xFFFD) or -2(0xFFFE) : a display output cannot be given due to
  *                                picture reordering or skip option.
- *     -1(0xFFFF) : there is no more output for display 
+ *     -1(0xFFFF) : there is no more output for display
  *                  at the end of sequence decoding.
  *      > 0 : Normal display index.
  *
@@ -3909,7 +3909,7 @@ typedef struct _mc_h264_h265_output_frame_info {
  * which were registered using VPU_DecRegisterFrameBuffer(). The currently
  * decoded frame is stored into the frame buffer specified by this index.
  * The valid numbers are as follows.
- *     -2 : it indicates that no decoded output is generated because 
+ *     -2 : it indicates that no decoded output is generated because
  *          decoder meets EOS (End Of Sequence) or skip.
  *     -1 : it indicates that decoder fails to decode a picture because
  *          there is no available frame buffer.
@@ -4188,7 +4188,7 @@ typedef struct _mc_mjpeg_jpeg_output_frame_info {
 
 /**
  * This is a frame buffer index for the picture to be displayed at the
- * moment among frame buffers which are registered using 
+ * moment among frame buffers which are registered using
  * JPU_DecRegisterFrameBuffer(). Frame data to be displayed are stored into
  * the frame buffer with this index.
  *     -1(0xFFFF) : ?
@@ -5100,6 +5100,11 @@ typedef struct _media_codec_buffer {
 		mc_audio_frame_buffer_info_t aframe_buf;
 		mc_audio_stream_buffer_info_t astream_buf;
 	};
+
+/**
+ * user pointer, app could queue specific data, which could be used in encode/decode complete callback function.
+ */
+	hb_ptr user_ptr;
 } media_codec_buffer_t;
 
 /**
@@ -5109,8 +5114,8 @@ typedef struct _media_codec_callback {
 /**
  * Notify users that an input buffer is available.
  *
- * @param[in]       user data 
- * @param[in]       media codec buffer 
+ * @param[in]       user data
+ * @param[in]       media codec buffer
  *
  * - Note:
  * - Encoding: Support.
@@ -5123,8 +5128,8 @@ typedef struct _media_codec_callback {
 /**
  * Notify users that an output buffer is available.
  *
- * @param[in]       user data 
- * @param[in]       media codec buffer 
+ * @param[in]       user data
+ * @param[in]       media codec buffer
  *
  * - Note:
  * - Encoding: Support.
@@ -5138,8 +5143,8 @@ typedef struct _media_codec_callback {
 /**
  * Notify users that an internal message is triggered.
  *
- * @param[in]       user data 
- * @param[in]       error 
+ * @param[in]       user data
+ * @param[in]       error
  *
  * - Note:
  * - Encoding: Support.
@@ -5163,6 +5168,22 @@ typedef struct _media_codec_callback {
  * - Default: 0
  */
 	void (*on_vlc_buffer_message)(hb_ptr userdata, hb_s32 * vlc_buf);
+
+
+/**
+ * Notify users that an input buffer is consumed.
+ *
+ * @param[in]       user data
+ * @param[in]       media codec buffer
+ *
+ * - Note:
+ * - Encoding: Support.
+ * - Decoding: Support.
+ * - Default: 0
+ */
+	void (*on_input_buffer_consumed)(hb_ptr userdata,
+			media_codec_buffer_t * buffer);
+
 } media_codec_callback_t;
 
 /**
@@ -5252,7 +5273,7 @@ typedef struct _mc_video_intra_refresh_params {
  *
  * Values[0,2^31-1]
  *
- * - Note:It's unchangable parameter in the same sequence. 
+ * - Note:It's unchangable parameter in the same sequence.
  *        The intra_refresh_mode 4 can't work with lossless and ROI mode.
  * - Encoding: Support.
  * - Decoding: Unsupport.
@@ -5448,7 +5469,7 @@ typedef struct _mc_h264_timing_params {
 **/
 typedef struct _mc_h265_timing_params {
 /**
- * It specifies the number of time units of a clock operating at the frequency 
+ * It specifies the number of time units of a clock operating at the frequency
  * time_scale Hz. This is used to to calculate frameRate syntax.
  *  Values[0, 2^31 - 1]
  *
@@ -5943,7 +5964,7 @@ typedef struct _mc_h264_slice_params {
  *     0: no multi-slice
  *     1: slice in MB number.
  *
- * - Note: It's changable RDO parameters. 
+ * - Note: It's changable RDO parameters.
  * - Encoding: Support.
  * - Decoding: Unsupport.
  * - Default: 0.
@@ -6107,7 +6128,7 @@ typedef struct _mc_video_smart_bg_enc_params {
 	hb_s32 bg_lambda_qp;
 
 /**
- * It specifies the difference between the lambda QP value of background and 
+ * It specifies the difference between the lambda QP value of background and
  * the lambda QP value of foreground.
  * Values[-16~15]
  *
@@ -6196,7 +6217,7 @@ typedef struct _mc_h265_pred_unit_params {
  * It specifies the number of merge candidates in RDO (0,1 or 2). HEVC only.
  * The valid numbers are as follows.
  *     1: improves encoding performance.
- *     2: offers better quality of encoded picture, 
+ *     2: offers better quality of encoded picture,
  *
  * - Note: It's changable RDO parameters.
  * - Encoding: Support.
@@ -6241,7 +6262,7 @@ typedef struct _mc_h264_transform_params {
 /**
  * The value of chroma(Cb) QP offset.
  * Values[-12~12]
- * 
+ *
  * - Note: It's changable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
@@ -6252,7 +6273,7 @@ typedef struct _mc_h264_transform_params {
 /**
  * The value of chroma(Cr) QP offset.
  * Values[-12~12]
- * 
+ *
  * - Note: It's changable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
@@ -6280,10 +6301,10 @@ typedef struct _mc_h264_transform_params {
  * INTER4X4_LUMA, INTER4X4_CHROMAU, INTER4X4_CHROMAV"
  * Values[1~255]
  *
- * - Note: It's unchangable parameter in the same sequence. 
+ * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_4x4[MC_SL_MATRIX_NUM][16];
 
@@ -6292,10 +6313,10 @@ typedef struct _mc_h264_transform_params {
  * "INTRA8X8_LUMA,INTER8X8_LUMA"
  * Values[1~255]
  *
- * - Note: It's unchangable parameter in the same sequence. 
+ * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_8x8[2][64];
 } mc_h264_transform_params_t;
@@ -6317,7 +6338,7 @@ typedef struct _mc_h265_transform_params {
  * The value of chroma(Cr) QP offset.
  * Values[-12~12] for XJ3/J6
  * Values[0] for J5
- * 
+ *
  * - Note: It's changable parameter in the same sequence for XJ3/J6.
  * - Encoding: Support.
  * - Decoding: Unsupport.
@@ -6362,7 +6383,7 @@ typedef struct _mc_h265_transform_params {
  * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_8x8[MC_SL_MATRIX_NUM][64];
 
@@ -6375,7 +6396,7 @@ typedef struct _mc_h265_transform_params {
  * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_16x16[MC_SL_MATRIX_NUM][64];
 
@@ -6387,7 +6408,7 @@ typedef struct _mc_h265_transform_params {
  * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_32x32[2][64];
 
@@ -6400,7 +6421,7 @@ typedef struct _mc_h265_transform_params {
  * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_dc_16x16[MC_SL_MATRIX_NUM];
 
@@ -6412,7 +6433,7 @@ typedef struct _mc_h265_transform_params {
  * - Note: It's unchangable parameter in the same sequence.
  * - Encoding: Support.
  * - Decoding: Unsupport.
- * - Default: 
+ * - Default:
  */
 	hb_u8 scaling_list_dc_32x32[2];
 } mc_h265_transform_params_t;
@@ -7079,7 +7100,7 @@ typedef struct _mc_jpeg_enc_params {
  * The valid numbers are as follows
  * 0:disable
  * 1:enable
- * 
+ *
  * - Note: It's changable parameter in the same sequence.
  * - Encoding:Support
  * - Decoding:Support
@@ -7591,6 +7612,34 @@ extern hb_s32 hb_mm_mc_set_callback(media_codec_context_t *context,
  * @design
  */
 extern hb_s32 hb_mm_mc_set_vlc_buffer_listener(
+				media_codec_context_t *context,
+				const media_codec_callback_t *callback, hb_ptr userdata);
+
+/**
+ * @NO{S07E01C01I}
+ * @ASIL{QM}
+ * @brief Set input buffer listener to media codec. When this input buffer encode or decode done, the callback
+ * funciton will be involked. The function should be called before MediaCodec is started.
+ *
+ * @param[in] context: codec context
+ * @param[in] callback: @see media_codec_callback_t
+ * @param[in] userdata: pointer to user data
+ *
+ * @retval =0: Success
+ * @retval HB_MEDIA_ERR_UNKNOWN: Unknow error
+ * @retval HB_MEDIA_ERR_INVALID_PARAMS: Invalid parameter
+ * @retval HB_MEDIA_ERR_OPERATION_NOT_ALLOWED: Disallowed operation
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: XJ3/J5/J6
+ * @compatibility SW: v1.2.3
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+ */
+extern hb_s32 hb_mm_mc_set_input_buffer_listener (
 				media_codec_context_t *context,
 				const media_codec_callback_t *callback, hb_ptr userdata);
 
@@ -8794,7 +8843,7 @@ extern hb_s32 hb_mm_mc_set_pred_unit_config(
  * @brief Get the transform parameters.
  * Only applied in H264 and H265 codec.
  *
- * @param[in] context: codec context 
+ * @param[in] context: codec context
  * @param[out] params: transform parameters @see mc_video_transform_params_t
  *
  * @retval =0: Success

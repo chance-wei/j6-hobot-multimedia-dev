@@ -23,6 +23,7 @@ typedef struct gdc_ichn_attr_s {
 	uint32_t input_width;
 	uint32_t input_height;
 	uint32_t input_stride;
+	uint32_t n_in_one;
 } gdc_ichn_attr_t;
 
 typedef struct gdc_ochn_attr_s {
@@ -92,6 +93,12 @@ typedef struct gdc_cfg_s {
          * range:N/A; default: N/A
          */
 	uint32_t gdc_pipeline;
+	/**
+         * @var gdc_cfg_s::n_in_one
+         * gdc split n in one parameters.
+         * range:N/A; default: N/A
+         */
+	uint32_t n_in_one;
 } gdc_cfg_t;
 
 int32_t gdc_node_parser_config(const void *root, gdc_cfg_t *cfg);

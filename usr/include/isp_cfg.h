@@ -36,6 +36,7 @@ typedef enum enum_input_mode_e {
 typedef struct isp_attr_s {
 	uint32_t input_mode;
 	uint32_t sched_mode;
+	uint32_t tile_mode;
 	isp_sensor_mode_t sensor_mode;
 	common_rect_t crop;
 } isp_attr_t;

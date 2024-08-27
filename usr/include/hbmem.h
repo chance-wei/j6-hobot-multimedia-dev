@@ -49,7 +49,7 @@ enum hbmem_backends {
  */
 #define BACKEND_TYPE(backend)	((uint64_t)backend << 24)
 
-#define MEM_CACHEABLE (0x1 << 0)	/**< memory cacheable flag*/
+#define MEM_CACHEABLE ((uint64_t)0x1U << 0)	/**< memory cacheable flag*/
 
 /**
  * @NO{S21E04C02I}

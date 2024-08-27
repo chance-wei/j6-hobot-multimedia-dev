@@ -44,34 +44,21 @@ typedef enum enum_isp_module_version {
 typedef union tag_isp_module_ctrl_u {
 	uint32_t u32Key;
 	struct {
-		uint32_t bitWdrBlc : 1; /* RW;[0] */
-		uint32_t bitWdrDgain : 1; /* RW;[1] */
-		uint32_t bitWdrWbGain : 1; /* RW;[2] */
-		uint32_t bitFrameStitch : 1; /* RW;[3] */
-		uint32_t bitDecompare : 1; /* RW;[4] */
-		uint32_t bitWb : 1; /* RW;[5] */
-		uint32_t bitIspDgain : 1; /* RW;[6] */
-		uint32_t bitBlc : 1; /* RW;[7] */
-		uint32_t bitGe : 1; /* RW;[8] */
-		uint32_t bitDdpc : 1; /* RW;[9] */
-		uint32_t bitSdpc : 1; /* RW;[10] */
-		uint32_t bitMeshShading: 1; /* RW;[11] */
-		uint32_t bitIsp2Dnr : 1; /* RW;[12] */
-		uint32_t bitIsp3Dnr : 1; /* RW;[13] */
-		uint32_t bitWdr : 1; /* RW;[14] */
-		uint32_t bitDemosaic : 1; /* RW;[15] */
-		uint32_t bitCac : 1; /* RW;[16] */
-		uint32_t bitDepurle : 1; /* RW;[17] */
-		uint32_t bitCcm : 1; /* RW;[18] */
-		uint32_t bitGamma : 1; /* RW;[19] */
-		uint32_t bitCa : 1; /* RW;[20] */
-		uint32_t bitCnr : 1; /* RW;[21] */
-		uint32_t bitEe : 1; /* RW;[22] */
-		uint32_t bitCsc : 1; /* RW;[23] */
-		uint32_t bitColorProcess : 1; /* RW;[24] */
-		uint32_t bitRgbir : 1; /* RW;[25] */
-		uint32_t bitRadialShading : 1; /* RW;[26] */
-		uint32_t bitYnr : 1; /* RW;[27] */
+		uint32_t bit_ccm : 1; /* RW;[0] */
+		uint32_t bit_cnr : 1; /* RW;[1] */
+		uint32_t bit_cproc : 1; /* RW;[2] */
+		uint32_t bit_dg : 1; /* RW;[3] */
+		uint32_t bit_demosaic : 1; /* RW;[4] */
+		uint32_t bit_dpcc : 1; /* RW;[5] */
+		uint32_t bit_2dnr : 1; /* RW;[6] */
+		uint32_t bit_3dnr : 1; /* RW;[7] */
+		uint32_t bit_ee : 1; /* RW;[8] */
+		uint32_t bit_lsc : 1; /* RW;[9] */
+		uint32_t bit_lut3d : 1; /* RW;[10] */
+		uint32_t bit_wdr: 1; /* RW;[11] */
+		uint32_t bit_ynr : 1; /* RW;[12] */
+		uint32_t bit_ge : 1; /* RW;[13] */
+		uint32_t bit_wb : 1; /* RW;[14] */
 	};
 } isp_module_ctrl_u;
 
@@ -111,8 +98,10 @@ typedef struct isp_exposure_manual_attr_s {
 	float again;
 	float dgain;
 	float ispgain;
-	uint32_t ae_exp;
+	float ae_exp;
 	uint32_t cur_lux;	// 环境照度
+	uint32_t frame_id;
+	uint64_t timestamps;
 } hbn_isp_exposure_manual_attr_t;
 
 typedef struct hbn_isp_exposure_attr_s {
@@ -166,7 +155,6 @@ typedef struct hbn_isp_awb_gain_s {
 typedef struct hbn_isp_awb_auto_attr_s {
 	uint32_t speed;
 	uint32_t tolerance;
-	uint32_t static_wb[4]; // 归一化参数
 	uint32_t rg_strength;  // r通道强度（设置白平衡偏好r通道）
 	uint32_t bg_strength;  // b通道强度（设置白平衡偏好b通道）
 	hbn_isp_awb_gain_t gain;
@@ -175,7 +163,7 @@ typedef struct hbn_isp_awb_auto_attr_s {
 
 typedef struct hbn_isp_awb_manual_attr_s {
 	hbn_isp_awb_gain_t gain;
-	uint32_t temper;
+	uint32_t temper;	// 预留
 } hbn_isp_awb_manual_attr_t;
 
 typedef struct hbn_isp_awb_attr_s {

@@ -86,10 +86,10 @@ typedef enum mem_usage_t {
 	HB_MEM_USAGE_CPU_WRITE_MASK          = 0x000000F0LL,	/**< mask for the software read and write flag */
 
 	HB_MEM_USAGE_HW_CIM                  = 0x00000100LL,	/**< buffer will be used as camera interface module buffer */
-	HB_MEM_USAGE_HW_PYRAMID              = 0x00000200ULL,	/**< reserved */
+	HB_MEM_USAGE_HW_PYRAMID              = 0x00000200ULL,	/**< buffer will be used as pyramid buffer */
 	HB_MEM_USAGE_HW_GDC                  = 0x00000400LL,	/**< buffer will be used as geometric distortion correction buffer */
-	HB_MEM_USAGE_HW_STITCH               = 0x00000800LL,	/**< reserved */
-	HB_MEM_USAGE_HW_OPTICAL_FLOW         = 0x00001000ULL,	/**< reserved */
+	HB_MEM_USAGE_HW_STITCH               = 0x00000800LL,	/**< buffer will be used as stitch buffer */
+	HB_MEM_USAGE_HW_OPTICAL_FLOW         = 0x00001000ULL,	/**< buffer will be used as optical flow buffer */
 	HB_MEM_USAGE_HW_BPU                  = 0x00002000LL,	/**< buffer will be used as bpu buffer */
 	HB_MEM_USAGE_HW_ISP                  = 0x00004000LL,	/**< buffer will be used as isp buffer */
 	HB_MEM_USAGE_HW_DISPLAY              = 0x00008000LL,	/**< buffer will be used as display buffer */
@@ -99,7 +99,7 @@ typedef enum mem_usage_t {
 	HB_MEM_USAGE_HW_GDC_OUT              = 0x00080000LL,	/**< buffer will be used as geometric distortion correction out buffer */
 	HB_MEM_USAGE_HW_IPC                  = 0x00100000LL,	/**< buffer will be used as ipc buffer.*/
 	HB_MEM_USAGE_HW_PCIE                 = 0x00200000LL,	/**< buffer will be used as pcie buffer.*/
-	HB_MEM_USAGE_HW_YNR                  = 0x00400000LL,	/**< reserved */
+	HB_MEM_USAGE_HW_YNR                  = 0x00400000LL,	/**< buffer will be used as ynr buffer.*/
 	HB_MEM_USAGE_HW_MASK                 = 0x00FFFF00LL,	/**< mask for the hw flag */
 
 	HB_MEM_USAGE_MAP_INITIALIZED         = 0x01000000LL,	/**< buffer will be initialized */
@@ -200,7 +200,7 @@ typedef struct hb_mem_graphic_buf_t {
 #define HB_MEM_MAXIMUM_GRAPH_BUF 8		/**< max graphic buffer number in graphic buffer group*/
 
 /**
- * @struct hb_mem_buf_queue_t
+ * @struct hb_mem_graphic_buf_group_t
  * Define the descriptor of graphic buffer group
  * @NO{S21E04C02I}
  */
@@ -1719,7 +1719,7 @@ int32_t hb_mem_dma_copy(uint64_t dst_vaddr, uint64_t src_vaddr, uint64_t size);
  *
  * @data_read None
  * @data_updated None
- * @compatibility HW: J5/J6
+ * @compatibility HW: J6
  * @compatibility SW: 0.1.1
  *
  * @callgraph
@@ -1745,7 +1745,7 @@ int32_t hb_mem_alloc_graph_buf_group(int32_t *w, int32_t *h, int32_t *format, in
  *
  * @data_read None
  * @data_updated None
- * @compatibility HW: J5/J6
+ * @compatibility HW: J6
  * @compatibility SW: 0.1.1
  *
  * @callgraph
@@ -1769,7 +1769,7 @@ int32_t hb_mem_import_graph_buf_group(hb_mem_graphic_buf_group_t *in_group, hb_m
  *
  * @data_read None
  * @data_updated None
- * @compatibility HW: J5/J6
+ * @compatibility HW: J6
  * @compatibility SW: 0.1.1
  *
  * @callgraph
@@ -1793,7 +1793,7 @@ int32_t hb_mem_get_graph_buf_group(int32_t fd, hb_mem_graphic_buf_group_t *buf_g
  *
  * @data_read None
  * @data_updated None
- * @compatibility HW: J5/J6
+ * @compatibility HW: J6
  * @compatibility SW: 0.1.1
  *
  * @callgraph
@@ -1815,7 +1815,7 @@ int32_t hb_mem_get_graph_buf_group_with_vaddr(uint64_t virt_addr, hb_mem_graphic
  *
  * @data_read None
  * @data_updated None
- * @compatibility HW: J5/J6
+ * @compatibility HW: J6
  * @compatibility SW: 0.1.1
  *
  * @callgraph
@@ -1851,6 +1851,102 @@ int32_t hb_mem_inc_graph_buf_group_consume_cnt(hb_mem_graphic_buf_group_t * buf_
 */
 int32_t hb_mem_get_buf_and_type_with_vaddr(uint64_t virt_addr, hb_mem_buffer_type_t *type, hb_mem_common_buf_t *com_buf,
 					hb_mem_graphic_buf_t *graph_buf, hb_mem_graphic_buf_group_t *graph_group);
+
+/**
+ * @NO{S21E04C02I}
+ * @ASIL{B}
+ * @brief increase the buffer user consume count with fd, not support graphic buffer group,
+ * pool buffer and share pool buffer.
+ *
+ * @param[in] hb_fd: the file description
+ *
+ * @retval "0": succeed
+ * @retval "HB_MEM_ERR_MODULE_NOT_FOUND": The memory module is not open
+ * @retval "HB_MEM_ERR_INVALID_FD": invalid fd
+ * @retval "HB_MEM_ERR_INVALID_PARAMS": invalid parameter
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 0.1.1
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+*/
+int32_t hb_mem_inc_user_consume_cnt(int32_t hb_fd);
+
+/**
+ * @NO{S21E04C02I}
+ * @ASIL{B}
+ * @brief decrease the buffer user consume count with fd, not support graphic buffer group,
+ * pool buffer and share pool buffer.
+ *
+ * @param[in] hb_fd: the file description
+ *
+ * @retval "0": succeed
+ * @retval "HB_MEM_ERR_MODULE_NOT_FOUND": The memory module is not open
+ * @retval "HB_MEM_ERR_INVALID_FD": invalid fd
+ * @retval "HB_MEM_ERR_INVALID_PARAMS": invalid parameter
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 0.1.1
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+*/
+int32_t hb_mem_dec_user_consume_cnt(int32_t hb_fd);
+
+/**
+ * @NO{S21E04C02I}
+ * @ASIL{B}
+ * @brief increase the buffer user consume count with fd, not support graphic buffer group,
+ * pool buffer and share pool buffer.
+ *
+ * @param[in] virt_addr: the virtual address 
+ *
+ * @retval "0": succeed
+ * @retval "HB_MEM_ERR_MODULE_NOT_FOUND": The memory module is not open
+ * @retval "HB_MEM_ERR_INVALID_VADDR": invalid vaddr
+ * @retval "HB_MEM_ERR_INVALID_PARAMS": invalid parameter
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 0.1.1
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+*/
+int32_t hb_mem_inc_user_consume_cnt_with_vaddr(uint64_t virt_addr);
+
+/**
+ * @NO{S21E04C02I}
+ * @ASIL{B}
+ * @brief decrease the buffer user consume count with fd, not support graphic buffer group,
+ * pool buffer and share pool buffer.
+ *
+ * @param[in] virt_addr: the virtual address 
+ *
+ * @retval "0": succeed
+ * @retval "HB_MEM_ERR_MODULE_NOT_FOUND": The memory module is not open
+ * @retval "HB_MEM_ERR_INVALID_VADDR": invalid vaddr
+ * @retval "HB_MEM_ERR_INVALID_PARAMS": invalid parameter
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 0.1.1
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+*/
+int32_t hb_mem_dec_user_consume_cnt_with_vaddr(uint64_t virt_addr);
 
 #ifdef __cplusplus
 }

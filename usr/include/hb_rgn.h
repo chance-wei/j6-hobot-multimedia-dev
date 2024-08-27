@@ -240,6 +240,11 @@ int32_t hbn_rgn_get_displayattr(hbn_rgn_handle_t handle, hbn_vnode_handle_t vnod
 int32_t hbn_rgn_draw_word(const hbn_rgn_draw_word_t *draw_word);
 int32_t hbn_rgn_draw_line(const hbn_rgn_draw_line_t *draw_line);
 int32_t hbn_rgn_set_colormap(uint32_t color_map[16]);
+int32_t hbn_rgn_set_sta(hbn_vnode_handle_t vnode_fd, int32_t chnid,
+			uint8_t sta_level[3], hbn_rgn_sta_t sta_attr[8]);
+int32_t hbn_rgn_get_sta(hbn_vnode_handle_t vnode_fd, int32_t chnid, uint16_t sta_value[8][4]);
+
+
 // int32_t hbn_rgn_get_canvas_info(hbn_rgn_handle_t handle, hbn_rgn_canvas_t *canvas_info);
 // int32_t hbn_rgn_update_canvas(hbn_rgn_handle_t handle);
 
@@ -255,33 +260,6 @@ int32_t hbn_rgn_set_colormap(uint32_t color_map[16]);
 
 // /*update all regions in the group*/
 // int32_t HB_RGN_BatchEnd(hbn_rgn_handle_group_t u32Group);
-
-/*set attribute of y statistics*/
-// int32_t HB_RGN_SetSta(hbn_vnode_handle_t vnode_fd, int32_t chnid,
-// 			uint8_t astStaLevel[3], hbn_rgn_sta_t astStaAttr[8]);
-
-/*get the value of statistics*/
-// int32_t HB_RGN_GetSta(hbn_vnode_handle_t vnode_fd, int32_t chnid, uint16_t astStaValue[8][4]);
-
-/*attach region to pym*/
-// int32_t HB_RGN_AttachToPym(hbn_rgn_handle_t handle, const RGN_CHN_S *pstChn,
-// 			const hbn_rgn_chn_attr_t *rgn_chn);
-
-// int32_t HB_RGN_AttachToPymEx(hbn_rgn_handle_t handle, const RGN_CHN_S *pstChn,
-// 			const hbn_rgn_chn_attr_t *rgn_chn);
-
-/*detach region from pym*/
-// int32_t HB_RGN_DetachFromPym(hbn_rgn_handle_t handle, const RGN_CHN_S *pstChn);
-
-/*set color map to pym*/
-// int32_t HB_RGN_SetPymColorMap(uint32_t color_map[16]);
-
-/*set attribute of y statistics in pym*/
-// int32_t HB_RGN_SetPymSta(const RGN_CHN_S *pstChn, uint8_t astStaLevel[3],
-			// hbn_rgn_sta_t astStaAttr[8]);
-
-/*get the value of statistics in pym*/
-// int32_t HB_RGN_GetPymSta(const RGN_CHN_S *pstChn, uint16_t astStaValue[8][4]);
 
 /*attach region to a yuv buffer*/
 // int32_t HB_RGN_AddToYUV(hbn_rgn_handle_t handle, hbn_vnode_image_t *vio_buffer,
