@@ -71,22 +71,50 @@ typedef struct hbn_vnode_image_group_s {
 	void *metadata;
 } hbn_vnode_image_group_t;
 
+// module type
 typedef enum hb_vnode_type_e {
-	HB_VIN,
-	HB_ISP,
-	HB_VSE,
-	HB_GDC,
-	HB_N2D,
-	HB_CODEC,
-	HB_OSD,
-	HB_STITCH, // reserved
-	HB_YNR, // reserved
-	HB_PYM, // reserved
-	HB_IDU, // reserved
-	HB_VPU, // reserved
-	HB_JPU, // reserved
+	HB_CAM = 1, // CAMERA type for hbn error.
+	HB_VIN_V0 = 2, // XJ3
+	HB_ISP_V0, // XJ3
+	HB_IPU_V0, // XJ3
+	HB_PYM_V0, // XJ3
+	HB_GDC, // XJ3/J5/J6
+	HB_VIN_V1, // J5
+	HB_ISP_V1, // J5
+	HB_PYM_V1, // J5
+	HB_STITCH, // J5/J6
+	HB_LKOF, // J5
+	HB_VIN, // J6
+	HB_ISP, // J6
+	HB_YNR, // J6
+	HB_PYM, // J6
+	HB_IDU, // XJ3/J5/J6
+	HB_VPU, // XJ3/J5/J6
+	HB_JPU, // XJ3/J5/J6
+	HB_CODEC, // XJ3/J5/J6
+	HB_VIN_RB, // X5
+	HB_ISP_RB, // X5
+	HB_VSE, // X5
+	HB_N2D, // X5
 	HB_VNODE_TYPE_MAX
 } hb_vnode_type;
+
+//typedef enum hb_vnode_type_e {
+//	HB_VIN,
+//	HB_ISP,
+//	HB_VSE,
+//	HB_GDC,
+//	HB_N2D,
+//	HB_CODEC,
+//	HB_OSD,
+//	HB_STITCH, // reserved
+//	HB_YNR, // reserved
+//	HB_PYM, // reserved
+//	HB_IDU, // reserved
+//	HB_VPU, // reserved
+//	HB_JPU, // reserved
+//	HB_VNODE_TYPE_MAX
+//} hb_vnode_type;
 
 typedef enum hobot_vflow_event_type_e {
 	HOBOT_vflow_EVENT_INFO_EOF,
@@ -114,6 +142,65 @@ typedef struct hbn_version_s {
 #define MAX_DS_NUM (6)
 #define MAX_PRE_INT (8u)
 
+//typedef struct {
+//	uint32_t start_top; //ROI coordinate Y
+//	uint32_t start_left; //ROI coordinate X
+//	uint32_t region_width; //ROI width
+//	uint32_t region_height; //ROI height
+//	uint32_t wstride_uv; //
+//	uint32_t wstride_y; //
+//	uint32_t vstride;
+//	uint32_t step_v;
+//	uint32_t step_h;
+//	uint32_t out_width;
+//	uint32_t out_height;
+//	uint32_t phase_y_v;
+//	uint32_t phase_y_h;
+//} vio_roi_box_t;
+//
+//typedef struct {
+//	uint32_t pixel_num_before_sol;
+//	uint32_t src_in_width;
+//	uint32_t src_in_height;
+//	uint32_t src_in_stride_y;
+//	uint32_t src_in_stride_uv;
+//	uint32_t suffix_hb_val;
+//	uint32_t prefix_hb_val;
+//	uint32_t suffix_vb_val;
+//	uint32_t prefix_vb_val;
+//	uint8_t bl_max_layer_en;
+//	uint8_t ds_roi_en;
+//	uint8_t ds_roi_uv_bypass;
+//	uint8_t ds_roi_sel[MAX_DS_NUM];
+//	uint8_t ds_roi_layer[MAX_DS_NUM];
+//	vio_roi_box_t ds_roi_info[MAX_DS_NUM];
+//	uint32_t pre_int_set_y[MAX_PRE_INT];
+//	uint32_t pre_int_set_uv[MAX_PRE_INT];
+//} chn_ctrl_t;
+//
+//typedef struct {
+//	uint8_t hw_id;
+//	uint8_t pym_mode;
+//	uint8_t slot_id;
+//	uint8_t axi_burst_len;
+//	uint8_t in_linebuff_watermark;
+//	uint8_t out_buf_noinvalid;
+//	uint8_t out_buf_noncached;
+//	uint8_t in_buf_noclean;
+//	uint8_t in_buf_noncached;
+//	uint8_t buf_consecutive;
+//	uint8_t pingpong_ring;
+//	uint32_t output_buf_num;
+//	uint32_t timeout;
+//	uint32_t threshold_time;
+//	int32_t layer_num_transfer_gdc;
+//	int32_t layer_num_share_ynr;
+//	chn_ctrl_t chn_ctrl;
+//	uint32_t reserved[8];
+//	uint32_t magicNumber;
+//} j6_pym_cfg_t;
+
+// j6 modify start
 typedef struct {
 	uint32_t start_top; //ROI coordinate Y
 	uint32_t start_left; //ROI coordinate X
@@ -128,10 +215,11 @@ typedef struct {
 	uint32_t out_height;
 	uint32_t phase_y_v;
 	uint32_t phase_y_h;
-} vio_roi_box_t;
+} roi_box_t;
 
 typedef struct {
 	uint32_t pixel_num_before_sol;
+	uint32_t invalid_head_lines;
 	uint32_t src_in_width;
 	uint32_t src_in_height;
 	uint32_t src_in_stride_y;
@@ -145,7 +233,7 @@ typedef struct {
 	uint8_t ds_roi_uv_bypass;
 	uint8_t ds_roi_sel[MAX_DS_NUM];
 	uint8_t ds_roi_layer[MAX_DS_NUM];
-	vio_roi_box_t ds_roi_info[MAX_DS_NUM];
+	roi_box_t ds_roi_info[MAX_DS_NUM];
 	uint32_t pre_int_set_y[MAX_PRE_INT];
 	uint32_t pre_int_set_uv[MAX_PRE_INT];
 } chn_ctrl_t;
@@ -165,12 +253,16 @@ typedef struct {
 	uint32_t output_buf_num;
 	uint32_t timeout;
 	uint32_t threshold_time;
-	int32_t layer_num_transfer_gdc;
-	int32_t layer_num_share_ynr;
+	int32_t layer_num_trans_next;
+	int32_t layer_num_share_prev;
 	chn_ctrl_t chn_ctrl;
-	uint32_t reserved[8];
+	uint32_t fb_buf_num;
+	uint32_t reserved[6];
 	uint32_t magicNumber;
-} j6_pym_cfg_t;
+} pym_cfg_t;
+// j6 modify end
+
+
 
 #define GDC_MAX_INPUT_PLANE (3u)
 

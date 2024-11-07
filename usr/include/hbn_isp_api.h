@@ -34,6 +34,76 @@ typedef struct isp_zone_weight_s {
 	float weight;
 } hbn_isp_zone_weight_t;
 
+
+/**
+ * @struct tag_isp_module_ctrl_reg1_u
+ * @brief Define the descriptor of isp mod ctr reg1 struct value.
+ * @NO{S08E06C02}
+ */
+typedef union tag_isp_module_ctrl_u {
+	uint32_t u32Key;
+	struct {
+		uint32_t bitRsv0 : 2; /* RW;[0-1] */
+		uint32_t bitBypassInputFormatter : 1; /* RW;[2] */
+		uint32_t bitBypassChannelSwitch : 1; /* RW;[3] */
+		uint32_t bitBypassVideoTest : 1; /* RW;[4] */
+		uint32_t bitBypassRawFrontend : 1; /* RW;[5] */
+		uint32_t bitBypassDefectPixel : 1; /* RW;[6] */
+		uint32_t bitRsv1 : 1; /* RW;[7] */
+		uint32_t bitBypassGammaFe : 1; /* RW;[8] */
+		uint32_t bitBypassGammaFeSq : 1; /* RW;[9] */
+		uint32_t bitBypassDigitalGain : 1; /* RW;[10] */
+		uint32_t bitBypassFsChannelSwitch : 1; /* RW;[11] */
+		uint32_t bitBypassSinter : 1; /* RW;[12] */
+		uint32_t bitBypassGammaBe : 1; /* RW;[13] */
+		uint32_t bitBypassGammaBeSq : 1; /* RW;[14] */
+		uint32_t bitBypassWhiteBlance : 1; /* RW;[15] */
+		uint32_t bitBypassRadialShading : 1; /* RW;[16] */
+		uint32_t bitBypassMeshShading : 1; /* RW;[17] */
+		uint32_t bitBypassIridix : 1; /* RW;[18] */
+		uint32_t bitBypassDemosaic : 1; /* RW;[19] */
+		uint32_t bitBypassOutFormat : 1; /* RW;[20] */
+		uint32_t bitBypassDigitalGainIridix : 1; /* RW;[21] */
+		uint32_t bitBypassPositionDigitalGain : 1; /* RW;[22] */
+		uint32_t bitRsv2: 1; /* RW;[23] */
+		uint32_t bitBypassCrop : 1; /* RW;[24] */
+		uint32_t bitRsv3 : 1; /* RW;[25] */
+		uint32_t bitBypassCNR : 1; /* RW;[26] */
+		uint32_t bitRsv4 : 2; /* RW;[27-28] */
+		uint32_t bitBypassCaCorrection : 1; /* RW;[29] */
+		uint32_t bitRsv5 : 1; /* RW;[30] */
+		uint32_t bitBypassSensorLinear : 1; /* RW;[31] */
+	};
+} isp_module_ctrl_reg1_u;
+
+/**
+ * @struct tag_isp_module_ctrl_reg2_u
+ * @brief Define the descriptor of isp mod ctr reg2 struct value.
+ * @NO{S08E06C02}
+ */
+typedef union tag_isp_module_ctrl_reg2_u { /*PRQA S ALL*/
+	uint32_t u32Key;
+	struct {
+		uint32_t bitBypassPFCorrection : 1; /* RW;[0] */
+		uint32_t bitBypassColorMatrix : 1; /* RW;[1] */
+		uint32_t bitBypassGammaRGBFwdSq : 1; /* RW;[2] */
+		uint32_t bitBypassGammaRGBRevSq : 1; /* RW;[3] */
+		uint32_t bitBypassCropRCCB : 1; /* RW;[4] */
+		uint32_t bitBypassCropPC : 1; /* RW;[5] */
+		uint32_t bitRsv0 : 26; /* RW;[6-31] */
+	};
+} isp_module_ctrl_reg2_u;
+
+/**
+ * @struct tag_isp_module_ctrl_u
+ * @brief Define the descriptor of isp mod ctr struct value.
+ * @NO{S08E06C02}
+ */
+typedef struct tag_isp_module_ctrl_s { /*PRQA S ALL*/
+	isp_module_ctrl_reg1_u isp_module_ctrl_reg1;
+	isp_module_ctrl_reg2_u isp_module_ctrl_reg2;
+} isp_module_ctrl_u;
+
 /* module control */
 typedef enum enum_isp_module_version {
 	HBN_ISP_MODULE_V0 = 0,
@@ -41,31 +111,33 @@ typedef enum enum_isp_module_version {
 	HBN_ISP_MODULE_BUTT
 } hbn_isp_module_version_e;
 
-typedef union tag_isp_module_ctrl_u {
-	uint32_t u32Key;
-	struct {
-		uint32_t bit_ccm : 1; /* RW;[0] */
-		uint32_t bit_cnr : 1; /* RW;[1] */
-		uint32_t bit_cproc : 1; /* RW;[2] */
-		uint32_t bit_dg : 1; /* RW;[3] */
-		uint32_t bit_demosaic : 1; /* RW;[4] */
-		uint32_t bit_dpcc : 1; /* RW;[5] */
-		uint32_t bit_2dnr : 1; /* RW;[6] */
-		uint32_t bit_3dnr : 1; /* RW;[7] */
-		uint32_t bit_ee : 1; /* RW;[8] */
-		uint32_t bit_lsc : 1; /* RW;[9] */
-		uint32_t bit_lut3d : 1; /* RW;[10] */
-		uint32_t bit_wdr: 1; /* RW;[11] */
-		uint32_t bit_ynr : 1; /* RW;[12] */
-		uint32_t bit_ge : 1; /* RW;[13] */
-		uint32_t bit_wb : 1; /* RW;[14] */
-	};
-} isp_module_ctrl_u;
+//typedef union tag_isp_module_ctrl_u {
+//	uint32_t u32Key;
+//	struct {
+//		uint32_t bit_ccm : 1; /* RW;[0] */
+//		uint32_t bit_cnr : 1; /* RW;[1] */
+//		uint32_t bit_cproc : 1; /* RW;[2] */
+//		uint32_t bit_dg : 1; /* RW;[3] */
+//		uint32_t bit_demosaic : 1; /* RW;[4] */
+//		uint32_t bit_dpcc : 1; /* RW;[5] */
+//		uint32_t bit_2dnr : 1; /* RW;[6] */
+//		uint32_t bit_3dnr : 1; /* RW;[7] */
+//		uint32_t bit_ee : 1; /* RW;[8] */
+//		uint32_t bit_lsc : 1; /* RW;[9] */
+//		uint32_t bit_lut3d : 1; /* RW;[10] */
+//		uint32_t bit_wdr: 1; /* RW;[11] */
+//		uint32_t bit_ynr : 1; /* RW;[12] */
+//		uint32_t bit_ge : 1; /* RW;[13] */
+//		uint32_t bit_wb : 1; /* RW;[14] */
+//	};
+//} isp_module_ctrl_u;
 
 typedef struct isp_module_ctrl_s {
 	hbn_isp_module_version_e version;
 	isp_module_ctrl_u module;
 } hbn_isp_module_ctrl_t;
+
+
 
 /* exposure attribute */
 typedef enum enum_isp_exposure_version {

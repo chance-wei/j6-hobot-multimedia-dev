@@ -97,6 +97,58 @@ extern int32_t hbn_camera_attach_to_vin(camera_handle_t cam_fd, vpf_handle_t vin
 /**
  * @NO{S10E02C01I}
  * @ASIL{B}
+ * @brief attach camera handle to handle of deserial link
+ * @detail camera connection info inherit from deserial and initializ hardware.
+ *	   use it if there is a deserial which camera connected to.
+ *
+ * @param[in] cam_fd: camera handle which create returned
+ *         range: [!NULL, !NULL], default: NA
+ * @param[in] des_fd: deserial handle which create returned
+ *         range: [!NULL, !NULL], default: NA
+ * @param[in] link: the link index of deerial to attach
+ *         range: [0, 3], default: NA
+ *
+ * @return 0:Success, <0:Failure
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 1.0.0
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+ */
+extern int32_t hbn_camera_attach_to_deserial(camera_handle_t cam_fd, deserial_handle_t des_fd, camera_des_link_t link);
+
+/**
+ * @NO{S10E02C01I}
+ * @ASIL{B}
+ * @brief attach camera handle to handle of vin node in vpf
+ * @detail get connection info from vin and initializ the camera hardware.
+ *	   use it only if there is no deserial here.
+ *
+ * @param[in] cam_fd: camera handle which create returned
+ *         range: [!NULL, !NULL], default: NA
+ * @param[in] vin: vpf handle of vin node which vpf create returned
+ *         range_fd: [!NULL, !NULL], default: NA
+ *
+ * @return 0:Success, <0:Failure
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 1.0.0
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+ */
+extern int32_t hbn_camera_attach_to_vin(camera_handle_t cam_fd, vpf_handle_t vin_fd);
+
+/**
+ * @NO{S10E02C01I}
+ * @ASIL{B}
  * @brief detach camera handle from handle of vin node in vpf
  * @detail do deinitialization of camera hardware and detach from vin.
  *	   use it only if there is no deserial here.
@@ -116,6 +168,28 @@ extern int32_t hbn_camera_attach_to_vin(camera_handle_t cam_fd, vpf_handle_t vin
  * @design
  */
 extern int32_t hbn_camera_detach_from_vin(camera_handle_t cam_fd);
+
+/**
+ * @NO{S10E02C01I}
+ * @ASIL{B}
+ * @brief detach camera handle from deserial handle
+ * @detail do deinitialization of camera hardware and detach from deserial
+ *
+ * @param[in] cam_fd: camera handle which create returned
+ *         range: [!NULL, !NULL], default: NA
+ *
+ * @return 0:Success, <0:Failure
+ *
+ * @data_read None
+ * @data_updated None
+ * @compatibility HW: J6
+ * @compatibility SW: 1.0.0
+ *
+ * @callgraph
+ * @callergraph
+ * @design
+ */
+extern int32_t hbn_camera_detach_from_deserial(camera_handle_t cam_fd);
 
 /**
  * @NO{S10E02C01I}
