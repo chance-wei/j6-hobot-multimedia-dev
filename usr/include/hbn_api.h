@@ -43,61 +43,61 @@ extern "C" {
 typedef int64_t hbn_vnode_handle_t;
 typedef int64_t hbn_vflow_handle_t;
 
-typedef struct hbn_frame_info_s {
-	uint32_t frame_id;
-	uint64_t timestamps;
-	struct timeval tv;
-	struct timeval trig_tv;
-	uint32_t frame_done;
-	int32_t bufferindex;
-} hbn_frame_info_t;
+//typedef struct hbn_frame_info_s {
+//	uint32_t frame_id;
+//	uint64_t timestamps;
+//	struct timeval tv;
+//	struct timeval trig_tv;
+//	uint32_t frame_done;
+//	int32_t bufferindex;
+//} hbn_frame_info_t;
 
-typedef struct hbn_buf_alloc_attr_s {
-	int64_t flags;
-	uint32_t buffers_num;
-	uint32_t is_contig;
-} hbn_buf_alloc_attr_t;
+//typedef struct hbn_buf_alloc_attr_s {
+//	int64_t flags;
+//	uint32_t buffers_num;
+//	uint32_t is_contig;
+//} hbn_buf_alloc_attr_t;
 
-typedef struct hbn_vnode_image_s {
-	hbn_frame_info_t info;
-	hb_mem_graphic_buf_t buffer;
-	void *metadata;
-} hbn_vnode_image_t;
-
+//typedef struct hbn_vnode_image_s {
+//	hbn_frame_info_t info;
+//	hb_mem_graphic_buf_t buffer;
+//	void *metadata;
+//} hbn_vnode_image_t;
+//
 //TODO use graphic group
-typedef struct hbn_vnode_image_group_s {
-	hbn_vnode_image_t image[HBN_LAYER_MAXIMUM];
-	uint32_t bit_map;
-	void *metadata;
-} hbn_vnode_image_group_t;
+//typedef struct hbn_vnode_image_group_s {
+//	hbn_vnode_image_t image[HBN_LAYER_MAXIMUM];
+//	uint32_t bit_map;
+//	void *metadata;
+//} hbn_vnode_image_group_t;
 
 // module type
-typedef enum hb_vnode_type_e {
-	HB_CAM = 1, // CAMERA type for hbn error.
-	HB_VIN_V0 = 2, // XJ3
-	HB_ISP_V0, // XJ3
-	HB_IPU_V0, // XJ3
-	HB_PYM_V0, // XJ3
-	HB_GDC, // XJ3/J5/J6
-	HB_VIN_V1, // J5
-	HB_ISP_V1, // J5
-	HB_PYM_V1, // J5
-	HB_STITCH, // J5/J6
-	HB_LKOF, // J5
-	HB_VIN, // J6
-	HB_ISP, // J6
-	HB_YNR, // J6
-	HB_PYM, // J6
-	HB_IDU, // XJ3/J5/J6
-	HB_VPU, // XJ3/J5/J6
-	HB_JPU, // XJ3/J5/J6
-	HB_CODEC, // XJ3/J5/J6
-	HB_VIN_RB, // X5
-	HB_ISP_RB, // X5
-	HB_VSE, // X5
-	HB_N2D, // X5
-	HB_VNODE_TYPE_MAX
-} hb_vnode_type;
+//typedef enum hb_vnode_type_e {
+//	HB_CAM = 1, // CAMERA type for hbn error.
+//	HB_VIN_V0 = 2, // XJ3
+//	HB_ISP_V0, // XJ3
+//	HB_IPU_V0, // XJ3
+//	HB_PYM_V0, // XJ3
+//	HB_GDC, // XJ3/J5/J6
+//	HB_VIN_V1, // J5
+//	HB_ISP_V1, // J5
+//	HB_PYM_V1, // J5
+//	HB_STITCH, // J5/J6
+//	HB_LKOF, // J5
+//	HB_VIN, // J6
+//	HB_ISP, // J6
+//	HB_YNR, // J6
+//	HB_PYM, // J6
+//	HB_IDU, // XJ3/J5/J6
+//	HB_VPU, // XJ3/J5/J6
+//	HB_JPU, // XJ3/J5/J6
+//	HB_CODEC, // XJ3/J5/J6
+//	HB_VIN_RB, // X5
+//	HB_ISP_RB, // X5
+//	HB_VSE, // X5
+//	HB_N2D, // X5
+//	HB_VNODE_TYPE_MAX
+//} hb_vnode_type;
 
 //typedef enum hb_vnode_type_e {
 //	HB_VIN,
@@ -116,31 +116,28 @@ typedef enum hb_vnode_type_e {
 //	HB_VNODE_TYPE_MAX
 //} hb_vnode_type;
 
-typedef enum hobot_vflow_event_type_e {
-	HOBOT_vflow_EVENT_INFO_EOF,
-	HOBOT_vflow_EVENT_INFO_PROCESSING_DONE,
-	HOBOT_vflow_EVENT_INFO_FRAME_CAPTURE,
-	HOBOT_vflow_EVENT_WARNING_CAPTURE_FRAME_DROP,
-	HOBOT_vflow_EVENT_ERROR_INTERNAL_FAILURE,
-	HOBOT_vflow_EVENT_ERROR_I2C_TRANSMISSION_FAILURE,
-	HOBOT_vflow_EVENT_WARNING_CSI_FRAME_DISCONTINUITY,
-	HOBOT_vflow_EVENT_ERROR_CSI_INPUT_STREAM_FAILURE
-} hobot_vflow_event_type;
+//typedef enum hobot_vflow_event_type_e {
+//	HOBOT_vflow_EVENT_INFO_EOF,
+//	HOBOT_vflow_EVENT_INFO_PROCESSING_DONE,
+//	HOBOT_vflow_EVENT_INFO_FRAME_CAPTURE,
+//	HOBOT_vflow_EVENT_WARNING_CAPTURE_FRAME_DROP,
+//	HOBOT_vflow_EVENT_ERROR_INTERNAL_FAILURE,
+//	HOBOT_vflow_EVENT_ERROR_I2C_TRANSMISSION_FAILURE,
+//	HOBOT_vflow_EVENT_WARNING_CSI_FRAME_DISCONTINUITY,
+//	HOBOT_vflow_EVENT_ERROR_CSI_INPUT_STREAM_FAILURE
+//} hobot_vflow_event_type;
+//
+//typedef enum hobot_vpf_chn_type_e {
+//	HOBOT_VNODE_CHN_AGGREGATE,
+//	HOBOT_VNODE_CHN_OTF,
+//	HOBOT_VNODE_CHN_IMAGE,
+//	HOBOT_VNODE_CHN_EMBDATA,
+//} hobot_vpf_chn_type;
 
-typedef enum hobot_vpf_chn_type_e {
-	HOBOT_VNODE_CHN_AGGREGATE,
-	HOBOT_VNODE_CHN_OTF,
-	HOBOT_VNODE_CHN_IMAGE,
-	HOBOT_VNODE_CHN_EMBDATA,
-} hobot_vpf_chn_type;
-
-typedef struct hbn_version_s {
-	uint32_t major;
-	uint32_t minor;
-} hbn_version_t;
-
-#define MAX_DS_NUM (6)
-#define MAX_PRE_INT (8u)
+//typedef struct hbn_version_s {
+//	uint32_t major;
+//	uint32_t minor;
+//} hbn_version_t;
 
 //typedef struct {
 //	uint32_t start_top; //ROI coordinate Y
@@ -201,6 +198,83 @@ typedef struct hbn_version_s {
 //} j6_pym_cfg_t;
 
 // j6 modify start
+#define MAX_DS_NUM (6u)
+#define MAX_PRE_INT (8u)
+
+typedef enum hb_vnode_type_e {
+	HB_CAM = 1, // CAMERA type for hbn error.
+	HB_VIN_V0 = 2, // XJ3
+	HB_ISP_V0, // XJ3
+	HB_IPU_V0, // XJ3
+	HB_PYM_V0, // XJ3
+	HB_GDC, // XJ3/J5/J6
+	HB_VIN_V1, // J5
+	HB_ISP_V1, // J5
+	HB_PYM_V1, // J5
+	HB_STITCH, // J5/J6
+	HB_LKOF, // J5
+	HB_VIN, // J6
+	HB_ISP, // J6
+	HB_YNR, // J6
+	HB_PYM, // J6cd ..
+	HB_IDU, // XJ3/J5/J6
+	HB_VPU, // XJ3/J5/J6
+	HB_JPU, // XJ3/J5/J6
+	HB_CODEC, // XJ3/J5/J6
+	HB_VIN_RB, // X5
+	HB_ISP_RB, // X5
+	HB_VSE, // X5
+	HB_N2D, // X5
+	HB_VNODE_TYPE_MAX
+} hb_vnode_type;
+
+typedef struct hbn_frame_info_s {
+	uint32_t frame_id;
+	uint64_t timestamps;
+	struct timeval tv;
+	struct timeval trig_tv;
+	uint32_t frame_done;
+	int32_t bufferindex;
+} hbn_frame_info_t;
+
+typedef struct hbn_buf_alloc_attr_s {
+	int64_t flags;
+	uint32_t buffers_num;
+	uint32_t is_contig;
+} hbn_buf_alloc_attr_t;
+
+typedef struct hbn_vnode_image_s {
+	hbn_frame_info_t info;
+	hb_mem_graphic_buf_t buffer;
+	void *metadata;
+} hbn_vnode_image_t;
+
+typedef struct hbn_vnode_image_group_s {
+	hbn_frame_info_t info;
+	hb_mem_graphic_buf_group_t buf_group;
+	void *metadata;
+} hbn_vnode_image_group_t;
+
+typedef struct hbn_version_s {
+	uint32_t major;
+	uint32_t minor;
+} hbn_version_t;
+
+typedef int32_t hobot_status;
+
+typedef struct vpf_ext_ctrl_t {
+	uint32_t id;
+	void *arg;
+} vpf_ext_ctrl_t;
+
+typedef enum vpf_bind_mode_e {
+	BIND_NONE,
+	BIND_OTF_INPUT,
+	BIND_OTF_OUTPUT,
+	BIND_M2M_INPUT,
+	BIND_M2M_OUTPUT,
+} vpf_bind_mode_t;
+
 typedef struct {
 	uint32_t start_top; //ROI coordinate Y
 	uint32_t start_left; //ROI coordinate X
